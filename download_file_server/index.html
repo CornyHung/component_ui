@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+        <button onclick='downloadFile("http://example.com/file.pdf", "demo.txt")'>Click</button>
+    </div>
+  </body>
+
+  <script>
+    function downloadFile(url, fileName) {
+      fetch(url)
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error('Netwwork res was not ok');
+          }
+
+          return res.blob();
+        })
+        .then((blob) => {
+          // Tạo url dựa vào blob
+          const url = window.URL.createObjectURL(blob);
+
+          // Create a tag
+          const a = document.createElement('a');
+
+          a.href = url;
+          a.download = fileName;
+
+          document.body.appendChild(a);
+
+          a.click();
+
+          document.body.removeChild(a);
+
+          window.URL.revokeObjectURL(url); // Clean up the object URL
+        })
+        .catch((error) => {
+          console.error(
+            'There has been a problem with your fetch operation:',
+            error
+          );
+        });
+    }
+
+
+  </script>
+</html>

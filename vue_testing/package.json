@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "vue": "^3.2.13"
+    "vee-validate": "^4.13.2",
+    "vue": "^3.2.13",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

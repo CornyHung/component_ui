@@ -1,17 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <NavBar />
-  <TodoApp />
+  <div>
+
+    <img alt="Vue logo" src="./assets/logo.png">
+    <!-- <NavBar />
+    <TodoApp /> -->
+    
+    <ModalData />
+  </div>
 </template>
 
 <script>
-import TodoApp from './components/TodoApp.vue'
-import NavBar from './components/Nav.vue'
+// import TodoApp from './components/TodoApp.vue'
+// import NavBar from './components/Nav.vue'
+import ModalData from './components/ModalData.vue'
 export default {
   name: 'App',
   components: {
-    TodoApp,
-    NavBar
+    // TodoApp,
+    // NavBar,
+    ModalData
   }
 }
 </script>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+    }
+    .wrap-before-after {
+      width: 930px;
+      border: 15px solid white;
+      box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.07);
+      border-radius: 10px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .wrap-before-after .slide-before-after {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+    }
+
+    .wrap-before-after .slide-before-after .img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: 900px 100%;
+    }
+    .wrap-before-after .slide-before-after .foreground-img {
+      border-right: 8px solid white;
+      width: 50%;
+    }
+
+    .wrap-before-after .slide-before-after .slider {
+      position: absolute;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 100%;
+      background: rgba(242, 242, 242, 0);
+      outline: none;
+      margin: 0;
+      -webkit-transition: all 0.2s;
+      transition: all 0.2s;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    .wrap-before-after .slide-before-after .slider-button-before-after {
+      pointer-events: none;
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: white;
+      left: calc(50% - 18px);
+      top: calc(50% - 18px);
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+    .wrap-before-after .slide-before-after .slider-button-before-after::before {
+      content: '';
+      padding: 3px;
+      display: inline-block;
+      border: solid #5d5d5d;
+      border-width: 0 2px 2px 0;
+      -webkit-transform: rotate(135deg);
+      -ms-transform: rotate(135deg);
+      transform: rotate(135deg);
+    }
+    .wrap-before-after .slide-before-after .slider-button-before-after::after {
+      content: '';
+      padding: 3px;
+      display: inline-block;
+      border: solid #5d5d5d;
+      border-width: 0 2px 2px 0;
+      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="wrap-before-after">
+        <div class="slide-before-after">
+          <div
+            class="img background-img"
+            style="
+              background-image: url('https://foxigold.com.vn/public/site/css/images/graphics/img-before.webp');
+            "
+          ></div>
+          <div
+            class="img foreground-img"
+            style="
+              background-image: url('https://foxigold.com.vn/public/site/css/images/graphics/img-after.webp');
+            "
+          ></div>
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="50"
+            class="slider"
+            name="slider"
+            id="slide-before-after"
+          />
+          <div class="slider-button-before-after"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  const before_img = document.getElementsByClassName('foreground-img')[0];
+  const slide_btn_before_after = document.getElementsByClassName(
+    'slider-button-before-after'
+  )[0];
+
+  document
+    .getElementById('slide-before-after')
+    .addEventListener('input', function (e) {
+      console.log(e.target.value);
+
+      before_img.style.width = `${e.target.value}%`;
+
+      slide_btn_before_after.style.left = `calc(${e.target.value}% - 18px)`;
+    });
+</script>
